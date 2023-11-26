@@ -19,7 +19,7 @@ export default function Component() {
 		console.log(isMenuOpen);
 	}
 	return (
-		<section className='w-full py-4 border-b bg-background/50 backdrop-blur-xl fixed'>
+		<section className='w-full py-3 border-b bg-background/50 backdrop-blur-xl fixed'>
 			<div className='container'>
 				<div className='flex items-center justify-between'>
 					{/* Navbar brand */}
