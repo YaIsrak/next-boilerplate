@@ -1,8 +1,8 @@
 import { NavItem } from '@/lib/constantData';
 import { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-	? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const baseUrl = process.env.baseURL
+	? `https://${process.env.baseURL}`
 	: 'http://localhost:3000';
 
 export default function sitemap(): MetadataRoute.Sitemap {

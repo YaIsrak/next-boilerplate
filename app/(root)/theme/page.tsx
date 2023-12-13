@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import LogInCard from '@/components/Card/LogInCard';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -19,8 +21,9 @@ import {
 	SelectValue,
 } from '@/components/ui/select';
 import { BellRing, Check } from 'lucide-react';
+import { Session, getServerSession } from 'next-auth';
 
-export default function page() {
+export default async function page() {
 	const notifications = [
 		{
 			title: 'Your call has been confirmed.',
@@ -36,9 +39,23 @@ export default function page() {
 		},
 	];
 
+	const session: Session | null = await getServerSession(authOptions);
+	console.log(session);
+
 	return (
 		<section className='section'>
 			<div className='container space-y-4'>
+				{session?.user && (
+					<div className='flex gap-2'>
+						<Avatar className='w-24 h-24'>
+							<AvatarImage src={session?.user?.image as string} />
+						</Avatar>
+						<div>
+							<h2>{session.user.name}</h2>
+							<h5>{session.user.email}</h5>
+						</div>
+					</div>
+				)}
 				{/* Heading */}
 				<h1>The Joke Tax Chronicles</h1>
 				<h2>The King's Plan</h2>
